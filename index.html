@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <div class="datetime">
+        <div class="date">
+            <span id="day">Day</span>,
+            <span id="date">00</span>,
+            <span id="month">january</span>,
+            
+            <span  id="year">1998</span>
+        </div>
+        <div class="time">
+            <span id="hours">00</span> :
+            <span id="minutes">00</span> :
+            <span id="seconds">00</span>
+            <span id="period"> AM</span>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function getmonthName(monthnumber){
+            var monthname = ["January" , "Fabruary" , "March" ,"April" ,"May","June","July","August","September","October","November","December"];
+            return monthname[monthnumber];
+        }
+        function getdayName(daynumber){
+            var dayname = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            return dayname [daynumber];
+        }
+        function clock(){
+           
+            
+            var dateTime = new Date();
+            var month = dateTime.getMonth();
+            var day = dateTime.getDay();
+            var date = dateTime.getDate();
+            var year = dateTime.getUTCFullYear();
+            var hour = dateTime.getHours();
+            var minute = dateTime.getMinutes();
+            var second = dateTime.getSeconds();
+            
+            if(hour >= 12){
+                document.getElementById('period').innerHTML = "PM";
+            }
+            else{
+                document.getElementById('period').innerHTML = "PM";
+            }
+
+            if(hour > 12){
+                hour = hour - 12;
+               
+            }
+           
+            
+            document.getElementById('month').innerHTML = getmonthName(month);
+            document.getElementById('day').innerHTML = getdayName(day);
+            document.getElementById('date').innerHTML = date;
+            document.getElementById('year').innerHTML = year;
+            document.getElementById('hours').innerHTML = hour;
+            document.getElementById('minutes').innerHTML = minute;
+            document.getElementById('seconds').innerHTML = second ;
+        }
+        var interval = setInterval(clock,1);
+    </script>
+</body>
+</html>
